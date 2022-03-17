@@ -248,114 +248,116 @@ function evaluaGanador(quien, fila,columna){
         }
         i++;
     }
-
     if(conectados==4){ganador = quien;}
 
-    // Valida Vertical
-    i=0;
-    conectados=0;
-    while(conectados<4 && i <6){
-        if(grilla[i][columna] == quien){
-            conectados++;
-        } else {
-            conectados=0;
-        }
-        i++;
-    }
-
-    if(conectados==4){ganador = quien;}
-
-    // Valida diagonal ascendente
-    diagonal=0;
-    while(conectados<4 && diagonal<6){
-        switch (diagonal) {
-            case 0:
-                i=3;
-                largo=4;
-                break;
-            case 1:
-                i=4;
-                largo=5;
-                break;
-            case 2:
-                i=5;
-                largo=6;
-                break;
-            case 3:
-                i=5;
-                largo=6;
-                break;
-            case 4:
-                i=5;
-                largo=5;
-                break;
-            case 5:
-                i=5;
-                largo=4;
-                break;
-            default:
-                break;
-        }
+    // Si no hay ganador horizontal, valida Vertical
+    if(ganador == 0){
+        i=0;
         conectados=0;
-        while(conectados<4 && largo>0){
-            if(grilla[i][diagonal + 3 - i] == quien){
-                conectados++
-            } else {
-                conectados=0;
-            }
-            i--;
-            largo--;
-        }
-        diagonal++;
-    }
-
-    if(conectados==4){ganador = quien;}
-
-    // Valida diagonal descendente
-    diagonal=0;
-    while(conectados<4 && diagonal<6){
-        switch (diagonal) {
-            case 0:
-                i=2;
-                largo=4;
-                break;
-            case 1:
-                i=1;
-                largo=5;
-                break;
-            case 2:
-                i=0;
-                largo=6;
-                break;
-            case 3:
-                i=0;
-                largo=6;
-                break;
-            case 4:
-                i=0;
-                largo=5;
-                break;
-            case 5:
-                i=0;
-                largo=4;
-                break;
-            default:
-                break;
-        }
-        conectados=0;
-        while(conectados<4 && largo>0){
-            if(grilla[i][i- 2 + diagonal] == quien){
-                conectados++
+        while(conectados<4 && i <6){
+            if(grilla[i][columna] == quien){
+                conectados++;
             } else {
                 conectados=0;
             }
             i++;
-            largo--;
         }
-        diagonal++;
+        if(conectados==4){ganador = quien;}
     }
 
-    if(conectados==4){ganador = quien;}
+    // Si no ha habifdo ganador hasta ahora, valida diagonal ascendente
+    if(ganador == 0){
+        diagonal=0;
+        while(conectados<4 && diagonal<6){
+            switch (diagonal) {
+                case 0:
+                    i=3;
+                    largo=4;
+                    break;
+                case 1:
+                    i=4;
+                    largo=5;
+                    break;
+                case 2:
+                    i=5;
+                    largo=6;
+                    break;
+                case 3:
+                    i=5;
+                    largo=6;
+                    break;
+                case 4:
+                    i=5;
+                    largo=5;
+                    break;
+                case 5:
+                    i=5;
+                    largo=4;
+                    break;
+                default:
+                    break;
+            }
+            conectados=0;
+            while(conectados<4 && largo>0){
+                if(grilla[i][diagonal + 3 - i] == quien){
+                    conectados++
+                } else {
+                    conectados=0;
+                }
+                i--;
+                largo--;
+            }
+            diagonal++;
+        }
+        if(conectados==4){ganador = quien;}
+    }
+
+    // Si no hay ganador hasta ahora, valida diagonal descendente
+    if(ganador==0){
+        diagonal=0;
+        while(conectados<4 && diagonal<6){
+            switch (diagonal) {
+                case 0:
+                    i=2;
+                    largo=4;
+                    break;
+                case 1:
+                    i=1;
+                    largo=5;
+                    break;
+                case 2:
+                    i=0;
+                    largo=6;
+                    break;
+                case 3:
+                    i=0;
+                    largo=6;
+                    break;
+                case 4:
+                    i=0;
+                    largo=5;
+                    break;
+                case 5:
+                    i=0;
+                    largo=4;
+                    break;
+                default:
+                    break;
+            }
+            conectados=0;
+            while(conectados<4 && largo>0){
+                if(grilla[i][i- 2 + diagonal] == quien){
+                    conectados++
+                } else {
+                    conectados=0;
+                }
+                i++;
+                largo--;
+            }
+            diagonal++;
+        }
+        if(conectados==4){ganador = quien;}
+    }
 
     if(ganador != 0){
         return(quien);

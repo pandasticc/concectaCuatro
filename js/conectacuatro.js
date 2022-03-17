@@ -80,9 +80,12 @@ function juegaJugador(){
 
 function juegaComputador(){
     let j=0;
+    let k;
+    let suma=0;
     let ganar = false;
     let ganoJugador = false;
     let ganasiguiente = true;
+    let jugadasPosibles=[0,0,0,0,0,0,0];
 
     // El computador calcula su jugada
  
@@ -108,9 +111,9 @@ function juegaComputador(){
                     ganar=true;
                 } else {
                     grilla[grilla[6][j]][j]=0;
-                    j++
+                    j++;
                 }
-            }
+            } else {j++;}
         }
         if (!ganar){
             do{
@@ -134,7 +137,7 @@ function juegaComputador(){
                         grilla[grilla[6][j]][j]=0;
                         j++
                     }
-                }
+                } else {j++;}
             }
             if (!ganar){
                 j=0;
@@ -147,7 +150,7 @@ function juegaComputador(){
                             grilla[grilla[6][j]][j]=0;
                             j++
                         }
-                    }
+                    } else {j++}
                 }
                 if (ganoJugador){
                     grilla[grilla[6][j]][j]=2;
@@ -175,7 +178,7 @@ function juegaComputador(){
                         grilla[grilla[6][j]][j]=0;
                         j++
                     }
-                }
+                } else {j++;}
             }
 
             if (!ganar){
@@ -189,14 +192,16 @@ function juegaComputador(){
                             grilla[grilla[6][j]][j]=0;
                             j++
                         }
-                    }
+                    } else {j++;}
                 }
                 if (ganoJugador){
                     grilla[grilla[6][j]][j]=2;
                 } else {
+                    for(k=0;k<7;k++){if(grilla[6][k]>=0){jugadasPosibles[k]=1;}}
                     do{
                         j = Math.floor(Math.random()*7);
                         if (grilla[6][j]>=0){
+                            jugadasPosibles[j]=0;
                             grilla[grilla[6][j]][j]=2;
                             if (grilla[6][j]>0){
                                 grilla[grilla[6][j]-1][j]=1;
@@ -211,8 +216,13 @@ function juegaComputador(){
                             } else {
                                 ganasiguiente = false;
                             }
+                        
                         }
-                    } while (grilla[6][j]<0 || ganasiguiente);
+                        if(ganasiguiente){
+                            suma=0;
+                            for(k=0;k<7;k++){suma += jugadasPosibles[k]}
+                        }
+                    } while (ganasiguiente && suma > 0);
                 }
             }
             grilla[6][j]--;

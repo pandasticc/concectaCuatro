@@ -5,6 +5,9 @@ var ganador = 0;
 var entradaNivel;
 var nivel = 1;
 var i;
+var cambiarQuienParte = true;
+var puedeJugar = false;
+var parteComputador=false;
 
 var grilla = [
     [0,0,0,0,0,0,0],
@@ -30,9 +33,12 @@ const nivel2 = document.getElementById("n2");
 const nivel3 = document.getElementById("n3");
 const nivel4 = document.getElementById("n4");
 
+const parte1 = document.getElementById("p1");
+const parte2 = document.getElementById("p2");
 
 comenzar.addEventListener('click', function(){
     comenzar.disabled=true;
+    puedeJugar=true;
     grilla = [
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
@@ -42,48 +48,66 @@ comenzar.addEventListener('click', function(){
         [0,0,0,0,0,0,0],
         [5,5,5,5,5,5,5]];
     for(i=1;i<=42;i++) { document.getElementById(i).bgColor = "white"; }
+    document.getElementById("resultado").innerHTML="";
+    cambiarQuienParte=false;
     ganador=0;
     casillasOcupadas=0;
+    if(parteComputador) juegaComputador();
 })
 
 
 // define el nivel
 
+parte1.addEventListener('click', function(){
+    if(cambiarQuienParte){
+        document.getElementById("p2").style.color="#8a7191d2";
+        this.style.color="red";
+        parteComputador=false;
+    }
+})
+
+parte2.addEventListener('click', function(){
+    if(cambiarQuienParte){
+        document.getElementById("p1").style.color="#8a7191d2";
+        this.style.color="red";
+        parteComputador=true;
+    }
+})
+
 nivel1.addEventListener('click', function(){
     let old;
     old="n"+nivel;
-    this.style.color="red";
     document.getElementById(old).style.color="#8a7191d2";
+    this.style.color="red";
     nivel=1;
-
 })
 
 nivel2.addEventListener('click', function(){
     let old;
     old="n"+nivel;
-    this.style.color="red";
     document.getElementById(old).style.color="#8a7191d2";
+    this.style.color="red";
     nivel=2;
 })
 
 nivel3.addEventListener('click', function(){
     let old;
     old="n"+nivel;
-    this.style.color="red";
     document.getElementById(old).style.color="#8a7191d2";
+    this.style.color="red";
     nivel=3;
 })
 
 nivel4.addEventListener('click', function(){
     let old;
     old="n"+nivel;
-    this.style.color="red";
     document.getElementById(old).style.color="#8a7191d2";
+    this.style.color="red";
     nivel=4;
 })
 
 jugada1.addEventListener('click', function(){
-    if(grilla[6][0]>=0){
+    if(grilla[6][0]>=0 && puedeJugar){
         ganador=juegaJugador(0);
         if(ganador==0){
             ganador=juegaComputador();
@@ -93,7 +117,7 @@ jugada1.addEventListener('click', function(){
 })
 
 jugada2.addEventListener('click', function(){
-    if(grilla[6][1]>=0){
+    if(grilla[6][1]>=0 && puedeJugar){
         ganador=juegaJugador(1);
         if(ganador==0){
             ganador=juegaComputador();
@@ -103,7 +127,7 @@ jugada2.addEventListener('click', function(){
 })
 
 jugada3.addEventListener('click', function(){
-    if(grilla[6][2]>=0){
+    if(grilla[6][2]>=0 && puedeJugar){
         ganador=juegaJugador(2);
         if(ganador==0){
             ganador=juegaComputador();
@@ -113,7 +137,7 @@ jugada3.addEventListener('click', function(){
 })
 
 jugada4.addEventListener('click', function(){
-    if(grilla[6][3]>=0){
+    if(grilla[6][3]>=0 && puedeJugar){
         ganador=juegaJugador(3);
         if(ganador==0){
           ganador=juegaComputador();
@@ -123,7 +147,7 @@ jugada4.addEventListener('click', function(){
 })
 
 jugada5.addEventListener('click', function(){
-    if(grilla[6][4]>=0){
+    if(grilla[6][4]>=0 && puedeJugar){
         ganador=juegaJugador(4);
         if(ganador==0){
             ganador=juegaComputador();
@@ -133,7 +157,7 @@ jugada5.addEventListener('click', function(){
 })
 
 jugada6.addEventListener('click', function(){
-    if(grilla[6][5]>=0){
+    if(grilla[6][5]>=0 && puedeJugar){
         ganador=juegaJugador(5);
         if(ganador==0){
             ganador=juegaComputador();
@@ -143,7 +167,7 @@ jugada6.addEventListener('click', function(){
 })
 
 jugada7.addEventListener('click', function(){
-    if(grilla[6][6]>=0){
+    if(grilla[6][6]>=0 && puedeJugar){
         ganador=juegaJugador(6);
         if(ganador==0){
             ganador=juegaComputador();
@@ -156,14 +180,16 @@ jugada7.addEventListener('click', function(){
     // Muestra resultado del juego
 function fin(){
     if (ganador==1){
-        alert("Ganó el jugador");
+        document.getElementById("resultado").innerHTML="Ganó el JUGADOR";
     } else if(ganador==0){
-        alert("Fue un empate");
+        document.getElementById("resultado").innerHTML="Fuen un EMPATE";
     } else {
-        alert("Ganó el computador");
+        document.getElementById("resultado").innerHTML="Ganó el COMPUTADOR";
     }
     comenzar.innerText="Jugar de nuevo";
     comenzar.disabled=false;
+    cambiarQuienParte=true;
+    puedeJugar=false;
 }
 
 

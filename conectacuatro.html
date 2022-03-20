@@ -5,17 +5,122 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conecta Cuatro</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
     <link href="estilos.css" rel="stylesheet" />
-    
-  
     </script>
 </head>
 <body>
-    <strong>Juguemos Conecta Cutatro.</strong> 
+    
+    <header>
+        <nav>
+            <h1>Conecta Cuatro</h1>
+        </nav>
+    </header>
 
-    <script src="js/conectacuatro.js"></script>
+    <aside>
+        <dl>
+            <dt>Nivel:</dt>
+            <dd id="n1" style="color:'red'">1. Baby Shark</dd>
+            <dd id="n2">2. Tiny Shark</dd>
+            <dd id="n3">3. Shark</dd>
+            <dd id="n4">4. Mega Shark</dd>
+        </dl>
+    </aside>
 
+    <section>
+        <article>
+            <p>
+               El primero que logre cuatro fichas en línea, ya sea de manera horizontal,
+               vertical o diagonal, gana.
+            </p>
+            <p>
+               Las fichas caen hasta la posición libre más baja.
+               <br>
+            </p>
+        </article>
+        <article>
+            <button id="comenzar">Jugar</button>
+        </article>
+        <article>
+            <br>
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <td id="b1">1</td>
+                        <td id="b2">2</td>
+                        <td id="b3">3</td>
+                        <td id="b4">4</td>
+                        <td id="b5">5</td>
+                        <td id="b6">6</td>
+                        <td id="b7">7</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="1">O</td>
+                        <td id="2">O</td>
+                        <td id="3">O</td>
+                        <td id="4">O</td>
+                        <td id="5">O</td>
+                        <td id="6">O</td>
+                        <td id="7">O</td>
+                    </tr>
+                    <tr>
+                        <td id="8">O</td>
+                        <td id="9">O</td>
+                        <td id="10">O</td>
+                        <td id="11">O</td>
+                        <td id="12">O</td>
+                        <td id="13">O</td>
+                        <td id="14">O</td>
+                    </tr>
+                    <tr>
+                        <td id="15">O</td>
+                        <td id="16">O</td>
+                        <td id="17">O</td>
+                        <td id="18">O</td>
+                        <td id="19">O</td>
+                        <td id="20">O</td>
+                        <td id="21">O</td>
+                    </tr>
+                    <tr>
+                        <td id="22">O</td>
+                        <td id="23">O</td>
+                        <td id="24">O</td>
+                        <td id="25">O</td>
+                        <td id="26">O</td>
+                        <td id="27">O</td>
+                        <td id="28">O</td>
+                    </tr>
+                    <tr>
+                        <td id="29">O</td>
+                        <td id="30">O</td>
+                        <td id="31">O</td>
+                        <td id="32">O</td>
+                        <td id="33">O</td>
+                        <td id="34">O</td>
+                        <td id="35">O</td>
+                    </tr>
+                    <tr>
+                        <td id="36">O</td>
+                        <td id="37">O</td>
+                        <td id="38">O</td>
+                        <td id="39">O</td>
+                        <td id="40">O</td>
+                        <td id="41">O</td>
+                        <td id="42">O</td>
+                    </tr>
+            </tbody>
+            </table>
+        </article>
+    
+    </section>
 
+    <footer>
+    </footer>
+    <!--<script src="js/conectaCuatro.js"></script>-->
+    <script src="js/conectaCuatro.js"></script>
 </body>
 </html>

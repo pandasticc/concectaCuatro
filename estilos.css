@@ -1,4 +1,52 @@
 body{
+    color: #8a7191d2;
+    font-family: 'Roboto Slab', serif;
+    font-size: 24px;
+    background-color: beige;
+}
+
+header{
+    background-color: rgba(210, 105, 30, 0.205);
+}
+
+h1{
+    width:100%;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+table{
+    border: 3px solid #000000;
+    margin: 0 auto;
+}
+
+table td{
+    border: 1px solid#000000;
+}
+
+table thead{
+    background-color: rgba(210, 105, 30, 0.205);
+}
+
+aside{
+    float: left;
+}
+
+aside dt{
+    font-size: 18px;
+}
+
+aside dd{
+    font-size: 14px;
+}
+
+section{
+    float: right;
+    width:80%; 
+    text-align: center;
+}
+
+#n1{
     color: #ff0000;
-    font-size: 32px;
 }

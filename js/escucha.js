@@ -24,6 +24,7 @@ jugada1.addEventListener('click', function(){
 })
 
 jugada2.addEventListener('click', function(){
+    
     document.getElementById(c2*7+1).bgColor = "#ff0000";
     c2--;
 })

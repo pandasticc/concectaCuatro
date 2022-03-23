@@ -8,6 +8,7 @@ var i;
 var cambiarQuienParte = true;
 var puedeJugar = false;
 var parteComputador=false;
+var resaltar=1;
 
 var grilla = [
     [0,0,0,0,0,0,0],
@@ -47,7 +48,10 @@ comenzar.addEventListener('click', function(){
         [0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0],
         [5,5,5,5,5,5,5]];
-    for(i=1;i<=42;i++) { document.getElementById(i).bgColor = "white"; }
+    for(i=1;i<=42;i++) { 
+        document.getElementById(i).bgColor = "white";
+        document.getElementById(i).innerHTML = "O";
+     }
     document.getElementById("resultado").innerHTML="";
     cambiarQuienParte=false;
     ganador=0;
@@ -60,7 +64,7 @@ comenzar.addEventListener('click', function(){
 
 parte1.addEventListener('click', function(){
     if(cambiarQuienParte){
-        document.getElementById("p2").style.color="#8a7191d2";
+        parte2.style.color="#8a7191d2";
         this.style.color="red";
         parteComputador=false;
     }
@@ -68,7 +72,7 @@ parte1.addEventListener('click', function(){
 
 parte2.addEventListener('click', function(){
     if(cambiarQuienParte){
-        document.getElementById("p1").style.color="#8a7191d2";
+        parte1.style.color="#8a7191d2";
         this.style.color="red";
         parteComputador=true;
     }
@@ -180,7 +184,7 @@ jugada7.addEventListener('click', function(){
     // Muestra resultado del juego
 function fin(){
     if (ganador==1){
-        document.getElementById("resultado").innerHTML="Ganó el JUGADOR";
+        document.getElementById("resultado").innerHTML="Ganó el HUMANO";
     } else if(ganador==0){
         document.getElementById("resultado").innerHTML="Fuen un EMPATE";
     } else {
@@ -222,7 +226,11 @@ function juegaComputador(){
         } while (grilla[6][j]<0);
 
         grilla[grilla[6][j]][j]=2;
-        document.getElementById(grilla[6][j]*7+j+1).bgColor = "yellow";
+        document.getElementById(resaltar).innerHTML = "O";
+        resaltar=grilla[6][j]*7+j+1;
+        document.getElementById(resaltar).innerHTML = "X";
+        document.getElementById(resaltar).bgColor = "yellow";
+        resaltar=grilla[6][j]*7+j+1
         grilla[6][j]--;
         break;
 
@@ -246,7 +254,10 @@ function juegaComputador(){
             } while (grilla[6][j]<0);
             grilla[grilla[6][j]][j]=2;
         }
-        document.getElementById(grilla[6][j]*7+j+1).bgColor = "yellow";
+        document.getElementById(resaltar).innerHTML = "O";
+        resaltar=grilla[6][j]*7+j+1;
+        document.getElementById(resaltar).innerHTML = "X";
+        document.getElementById(resaltar).bgColor = "yellow";
         grilla[6][j]--;
         break;
 
@@ -287,7 +298,10 @@ function juegaComputador(){
                 grilla[grilla[6][j]][j]=2;
                 }
             }
-            document.getElementById(grilla[6][j]*7+j+1).bgColor = "yellow";
+            document.getElementById(resaltar).innerHTML = "O";
+            resaltar=grilla[6][j]*7+j+1;
+            document.getElementById(resaltar).innerHTML = "X";
+            document.getElementById(resaltar).bgColor = "yellow";
             grilla[6][j]--;
         break;
 
@@ -352,7 +366,10 @@ function juegaComputador(){
                     } while (ganasiguiente && suma > 0);
                 }
             }
-            document.getElementById(grilla[6][j]*7+j+1).bgColor = "yellow";
+            document.getElementById(resaltar).innerHTML = "O";
+            resaltar=grilla[6][j]*7+j+1;
+            document.getElementById(resaltar).innerHTML = "X";
+            document.getElementById(resaltar).bgColor = "yellow";
             grilla[6][j]--;
         break;
         default:
